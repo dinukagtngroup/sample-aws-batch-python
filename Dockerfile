@@ -1,4 +1,4 @@
-FROM python:alpine3.17
+FROM python:3.9.9-slim-buster
 LABEL org.opencontainers.image.source=https://github.com/dinukagtngroup/sample-aws-batch-python
 WORKDIR /src
 COPY requirments.txt requirments.txt
