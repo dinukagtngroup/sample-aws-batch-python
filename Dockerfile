@@ -1,4 +1,7 @@
 FROM python:alpine3.17
 LABEL org.opencontainers.image.source=https://github.com/dinukagtngroup/sample-aws-batch-python
-COPY src src
-CMD ["python","src/main.py"]
+WORKDIR /src
+COPY requirments.txt requirments.txt
+RUN pip install --no-cache-dir -r requirements.txt
+COPY src .
+CMD ["python","main.py"]
