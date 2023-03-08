@@ -4,7 +4,7 @@ import boto3
 
 
 def get_batch_client():
-    return boto3.client('batch')
+    return boto3.client('batch', region='ap-south-1')
 
 
 def tag_job_multiple(job_arn: str, tags: dict[str]):
