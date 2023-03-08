@@ -37,7 +37,7 @@ def tag_job(status: str, reason: str = None):
 
 def retrieve_job_arn_from_job_id(job_id: str):
     c = get_batch_client()
-    response = c.describe_jobs([job_id])
+    response = c.describe_jobs(jobs=[job_id])
 
     if response['jobs'] and type(response['jobs']) == list and len(response['jobs']) == 1 and response['jobs'][0][
         'jobArn']:
