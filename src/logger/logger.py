@@ -4,6 +4,7 @@ import boto3
 
 
 def get_batch_client():
+    boto3.set_stream_logger()
     return boto3.client('batch', region_name='ap-south-1')
 
 
