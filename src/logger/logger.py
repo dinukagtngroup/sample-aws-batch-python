@@ -10,8 +10,7 @@ def get_batch_client():
 
 def tag_job_multiple(job_arn: str, tags: dict[str]):
     if is_an_array_job():
-        print('WARN: Tagging is not supported in Array Jobs.')
-        return
+        job_arn = extract_parent_job_arn_from_child_job_arn(job_arn, get_array_index_from_env())
 
     c = get_batch_client()
     c.tag_resource(resourceArn=job_arn, tags=tags)
@@ -36,6 +35,14 @@ def tag_job(status: str, reason: str = None):
     tag_job_multiple(job_arn, tags)
 
 
+def tag_job_success():
+    tag_job('SUCCESS')
+
+
+def tag_job_failure(fail_reason):
+    tag_job('FAILED', fail_reason)
+
+
 def retrieve_job_arn_from_job_id(job_id: str):
     c = get_batch_client()
     response = c.describe_jobs(jobs=[job_id])
@@ -47,6 +54,10 @@ def retrieve_job_arn_from_job_id(job_id: str):
     raise RuntimeError()
 
 
+def extract_parent_job_arn_from_child_job_arn(child_job_arn, array_index):
+    return child_job_arn[0: len(child_job_arn) - len(array_index) - 1]
+
+
 def get_job_id_from_env():
     return os.environ['AWS_BATCH_JOB_ID']
 
@@ -56,3 +67,7 @@ def is_an_array_job():
         return os.environ['AWS_BATCH_JOB_ARRAY_INDEX'] is not None
     except KeyError:
         return False
+
+
+def get_array_index_from_env():
+    return os.environ['AWS_BATCH_JOB_ARRAY_INDEX']

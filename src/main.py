@@ -1,6 +1,6 @@
 import sys
 
-from logger import tag_job
+from logger import *
 
 print('Hello World!')
 count = 0
@@ -12,8 +12,8 @@ print("Count is - " + str(count))
 try:
     div = 10/0
 except:
-    tag_job('FAIL', 'Cannot divide by zero.')
+    tag_job_failure('Cannot divide by zero.')
     sys.exit()
 
-tag_job('SUCCESS')
+tag_job_success()
 
