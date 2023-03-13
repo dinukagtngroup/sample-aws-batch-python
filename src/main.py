@@ -12,10 +12,10 @@ print("Count is - " + str(count))
 
 
 print(os.listdir('/'))
-print(os.listdir('/home'))
+print(os.listdir('/root'))
 
 print('OS Environment', os.environ)
-print('AWS Default Region', os.environ['AWS_DEFAULT_REGION'])
+# print('AWS Default Region', os.environ['AWS_DEFAULT_REGION'])
 
 try:
     div = 10/0
