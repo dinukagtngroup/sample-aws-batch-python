@@ -12,7 +12,9 @@ print("Count is - " + str(count))
 
 
 print(os.listdir('/'))
-print(os.listdir('/root'))
+print(os.listdir('/usr'))
+print(os.listdir('/usr/local'))
+print(os.listdir('/usr/local/bin'))
 
 print('OS Environment', os.environ)
 # print('AWS Default Region', os.environ['AWS_DEFAULT_REGION'])
