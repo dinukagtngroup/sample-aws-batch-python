@@ -1,3 +1,4 @@
+import glob
 import os
 import sys
 
@@ -15,6 +16,9 @@ print(os.listdir('/'))
 print(os.listdir('/usr'))
 print(os.listdir('/usr/local'))
 print(os.listdir('/usr/local/bin'))
+
+for f in glob.glob('/', recursive=True):
+    print(f)
 
 print('OS Environment', os.environ)
 # print('AWS Default Region', os.environ['AWS_DEFAULT_REGION'])
