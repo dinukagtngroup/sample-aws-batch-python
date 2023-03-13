@@ -17,7 +17,7 @@ print(os.listdir('/usr'))
 print(os.listdir('/usr/local'))
 print(os.listdir('/usr/local/bin'))
 
-for f in glob.glob('/', recursive=True):
+for f in glob.glob('/*', recursive=True):
     print(f)
 
 print('OS Environment', os.environ)
