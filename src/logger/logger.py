@@ -36,6 +36,8 @@ def tag_job(status: str, reason: str = None):
 
 
 def tag_job_success():
+    if is_an_array_job():
+        return
     tag_job('SUCCESS')
 
 
